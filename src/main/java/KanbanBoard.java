@@ -4,8 +4,7 @@ public class KanbanBoard {
     ArrayList<Task> tasks = new ArrayList<>();
 
     public void addTask(String task) {
-        tasks.add(new Task(task, "waiting"));
-
+        tasks.add(new Task(task, "WAITING"));
     }
 
     public void updateState(String task, String state) {
@@ -19,44 +18,42 @@ public class KanbanBoard {
     public void nextState(String task) {
         for (Task element : tasks) {
             if (element.getTask().equals(task)) {
-                if (element.getState().equals("waiting")) {
-                    element.updateTask("inprogress");
-                } else if (element.getState().equals("inprogress")) {
-                    element.updateTask("done");
+                if (element.getState().equals("WAITING")) {
+                    element.updateTask("IN_PROGRESS");
+                } else if (element.getState().equals("IN_PROGRESS")) {
+                    element.updateTask("DONE");
                 }
             }
-
-
         }
     }
 
     public void printTask() {
-        ArrayList<String> waiting = new ArrayList<>();
-        ArrayList<String> inprogress = new ArrayList<>();
-        ArrayList<String> done = new ArrayList<>();
-        ArrayList<String> needsdiscussion = new ArrayList<>();
+        ArrayList<String> waitingTasks = new ArrayList<>();
+        ArrayList<String> inProgressTasks = new ArrayList<>();
+        ArrayList<String> doneTasks = new ArrayList<>();
+        ArrayList<String> needsDiscussionTasks = new ArrayList<>();
         for (Task element : tasks) {
-            if (element.getState().equals("waiting")) {
-                waiting.add("=> " + element.getTask());
+            if (element.getState().equals("WAITING")) {
+                waitingTasks.add("=> " + element.getTask());
             }
-            else if (element.getState().equals("inprogress")) {
-                inprogress.add("=> " + element.getTask());
+            else if (element.getState().equals("IN_PROGRESS")) {
+                inProgressTasks.add("=> " + element.getTask());
             }
-            else if (element.getState().equals("done")) {
-                done.add("=> " + element.getTask());
+            else if (element.getState().equals("DONE")) {
+                doneTasks.add("=> " + element.getTask());
             }
-            else if (element.getState().equals("needsdiscussion")) {
-                needsdiscussion.add("=> " + element.getTask());
+            else if (element.getState().equals("NEEDS_DISCUSSION")) {
+                needsDiscussionTasks.add("=> " + element.getTask());
             }
         }
 
         System.out.println("\nWaiting: ");
-        waiting.forEach(System.out::println);
+        waitingTasks.forEach(System.out::println);
         System.out.println("In Progress: ");
-        inprogress.forEach(System.out::println);
+        inProgressTasks.forEach(System.out::println);
         System.out.println("Needs discussion: ");
-        needsdiscussion.forEach(System.out::println);
+        needsDiscussionTasks.forEach(System.out::println);
         System.out.println("Done: ");
-        done.forEach(System.out::println);
+        doneTasks.forEach(System.out::println);
     }
 }
