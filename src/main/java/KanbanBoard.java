@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class KanbanBoard {
-    ArrayList<Task> tasks = new ArrayList<>();
+    private ArrayList<Task> tasks = new ArrayList<>();
     private enum State { waiting, inProgress, needsdiscussion, done; }
 
     public void addTask(String task) {
