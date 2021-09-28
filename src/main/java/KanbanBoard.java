@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.ArrayList;
 
 public class KanbanBoard {
@@ -57,5 +59,8 @@ public class KanbanBoard {
         needsDiscussionTasks.forEach(System.out::println);
         System.out.println("Done: ");
         doneTasks.forEach(System.out::println);
+    }
+    public ArrayList<Task> getTasks(){
+        return tasks;
     }
 }
